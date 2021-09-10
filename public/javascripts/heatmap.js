@@ -13,6 +13,10 @@ const boxScale = d3.scaleLinear()
   .domain([-20, 45])
   .range([150, 0])
 
+const lineGenerator = d3.line()
+  .x((d, i) => { return 225 + 50 * i })
+  .y((d, i) => { return boxScale(d) })
+
 const dataPoints = svg
   .selectAll("g.data-point")
   .data(data)
@@ -73,3 +77,8 @@ monthGroups
   .attr("y", (d, i) => { return boxScale(d) + 2 })
   .text((d, i) => { return d })
   .style("fill", (d, i) => { return colorScale(d) })
+
+dataPoints
+  .append("path")
+  .datum((d, i) => { return d.months })
+  .attr("d", (d, i) => { return lineGenerator(d) })

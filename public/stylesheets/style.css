@@ -74,3 +74,9 @@ text.temp {
 circle {
   fill: var(--text-color);
 }
+
+path {
+  stroke: var(--text-color);
+  stroke-width: 4px;
+  fill: none;
+}
