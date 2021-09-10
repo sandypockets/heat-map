@@ -13,6 +13,10 @@ const boxScale = d3.scaleLinear()
   .domain([-20, 45])
   .range([150, 0])
 
+const unitScale = d3.scaleLinear()
+  .domain([0, 100])
+  .rangeRound([32, 212])
+
 const lineGenerator = d3.line()
   .x((d, i) => { return 225 + 50 * i })
   .y((d, i) => { return boxScale(d) })
@@ -70,7 +74,7 @@ monthGroups
   .attr("cy", (d, i) => { return boxScale(d) })
   .attr("r", 15)
 
-monthGroups
+const temperatures = monthGroups
   .append("text")
   .attr("class", "temp")
   .attr("x", 25)
@@ -82,3 +86,14 @@ dataPoints
   .append("path")
   .datum((d, i) => { return d.months })
   .attr("d", (d, i) => { return lineGenerator(d) })
+
+const selectTag = document.querySelector("select")
+selectTag.addEventListener("input", function() {
+ if (this.value === 'C') {
+  temperatures.text((d, i) => { return d })
+ } else {
+  temperatures.text((d, i) => { return unitScale(d) })
+ }
+})
+
+
