@@ -40,6 +40,13 @@ header {
 
 select {
   margin: 24px;
+  border: none;
+  color: white;
+  background-color: var(--background);
+}
+
+select:focus {
+  outline: none;
 }
 
 h1 {
@@ -69,14 +76,26 @@ text.temp {
   dominant-baseline: middle;
   font-size: 18px;
   font-weight: 700;
+  transition: opacity 0.3s;
 }
 
 circle {
   fill: var(--text-color);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 path {
   stroke: var(--text-color);
   stroke-width: 4px;
   fill: none;
+  transition: opacity 0.3s;
+}
+
+g.data-point:hover circle {
+  opacity: 1;
+}
+
+g.data-point:hover path {
+  opacity: 0;
 }
