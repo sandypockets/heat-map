@@ -64,3 +64,13 @@ text.city {
   font-weight: 700;
 }
 
+text.temp {
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+circle {
+  fill: var(--text-color);
+}
